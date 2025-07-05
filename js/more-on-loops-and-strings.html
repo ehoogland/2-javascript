@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+</head>
+<body>
+    <h1>More on Loops and Strings</h1>
+    <p>This is a simple HTML document to demonstrate loops and strings in JavaScript.</p>
+    <script>
+        // JavaScript code can go here
+        // This will log each character of the string "Hello, World!" to the console
+        let str = "Hello, World!";
+        for (let i = 0; i < str.length; i++) {
+            console.log(str[i]);
+        }
+        // This will log the string in reverse order
+        for (let i = str.length - 1; i >= 0; i--) {
+            console.log(str[i]);
+        }
+        // This will log the string in uppercase
+        console.log(str.toUpperCase());
+        // This will log the string in lowercase
+        console.log(str.toLowerCase());
+        // This will log the length of the string
+        console.log("Length of the string:", str.length);
+        // This will check if the string contains the word "World"
+        console.log("Does the string contain 'World'? ", str.includes("World"));
+
+        // This will replace "World" with "JavaScript"
+        console.log("Replaced string:", str.replace("World", "JavaScript"));
+        // This will split the string into an array of words
+        console.log("Split string:", str.split(" "));
+        // This will join the array back into a string
+        let wordsArray = str.split(" ");
+        console.log("Joined string:", wordsArray.join(" "));
+        // This will trim whitespace from the string
+        let whitespaceStr = "   Hello, World!   ";
+        console.log("Trimmed string:", whitespaceStr.trim());
+        // This will check if the string starts with "Hello"
+        console.log("Does the string start with 'Hello'? ", str.startsWith("Hello"));
+        // This will check if the string ends with "!"
+        console.log("Does the string end with '!'? ", str.endsWith("!"));
+        // This will find the index of the first occurrence of "o"
+        console.log("Index of first 'o':", str.indexOf("o"));
+        // This will find the index of the last occurrence of "o"
+        console.log("Index of last 'o':", str.lastIndexOf("o"));
+        // This will extract a character at index 7
+        // This will extract a substring from the string
+        console.log("Substring (from index 7 to 12):", str.substring(7, 12));
+        // This will slice the string from index 7 to the end
+        console.log("Slice (from index 7 to end):", str.slice(7));
+        // This will repeat the string 3 times
+        console.log("Repeated string (3 times):", str.repeat(3));
+        // This will check if the string is empty
+        console.log("Is the string empty? ", str.length === 0);
+        // This will convert the string to an array of characters
+        console.log("String to array of characters:", Array.from(str));
+        // This will check if the string is a palindrome
+        function isPalindrome(s) {
+            let cleaned = s.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+            let reversed = cleaned.split("").reverse().join("");
+            return cleaned === reversed;
+        }
+        console.log("Is 'A man, a plan, a canal: Panama' a palindrome? ", isPalindrome("A man, a plan, a canal: Panama"));              
+        // This will find the first occurrence of a character in the string
+        function findFirstOccurrence(str, char) {
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] === char) {
+                    return i;
+                }
+                
+            }
+            return -1; // Character not found
+        }
+        console.log("First occurrence of 'o':", findFirstOccurrence(str, 'o'));
+        // This will find the last occurrence of a character in the string
+        function findLastOccurrence(str, char) {
+            for (let i = str.length - 1; i >= 0; i--) {
+                if (str[i] === char) {
+                    return i;
+                }
+            }
+            return -1; // Character not found
+        }
+        console.log("Last occurrence of 'o':", findLastOccurrence(str, 'o'));   
+        // This will count the number of vowels in the string
+        function countVowels(str) {
+            let count = 0;
+            const vowels = "aeiouAEIOU";
+            for (let i = 0; i < str.length; i++) {
+                if (vowels.includes(str[i])) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        console.log("Number of vowels in the string:", countVowels(str));
+        // This will count the number of consonants in the string
+        function countConsonants(str) {
+            let count = 0;
+            const consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ";
+            for (let i = 0; i < str.length; i++) {
+                if (consonants.includes(str[i])) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        console.log("Number of consonants in the string:", countConsonants(str));
+        // This will count the number of words in the string
+        function countWords(str) {
+            let words = str.trim().split(/\s+/);
+            return words.length;
+        }
+        console.log("Number of words in the string:", countWords(str));     
+        // This will reverse the words in the string
+        function reverseWords(str) {
+            return str.split(" ").reverse().join(" ");
+        }
+        console.log("Reversed words in the string:", reverseWords(str));
+        // This will capitalize the first letter of each word in the string
+        function capitalizeFirstLetter(str) {
+            let words = str.split(" ");
+            for (let i = 0; i < words.length; i++) {
+                words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+            }
+            return words.join(" ");
+        }
+        console.log("Capitalized first letter of each word:", capitalizeFirstLetter(str));  
+        // This will check if the string is a valid email address
+        function isValidEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+        console.log("Is 'test@example.com' a valid email?", isValidEmail("test@example.com"));          
+        // This will check if the string is a valid URL
+        function isValidURL(url) {
+            const regex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,})(:[0-9]+)?(\/[^\s]*)?$/i;
+            return regex.test(url);
+        }
+        console.log("Is 'https://www.example.com' a valid URL?", isValidURL("https://www.example.com"));          
+        // This will check if the string is a valid phone number
+        function isValidPhoneNumber(phone) {
+            const regex = /^\+?[1-9]\d{1,14}$/; // E.164 format
+            return regex.test(phone);
+        }
+        console.log("Is '1234567890' a valid phone number?", isValidPhoneNumber("1234567890"));
+        console.log("Is '123-456-7890' a valid phone number?", isValidPhoneNumber("123-456-7890"));
+        console.log("Is '(123) 456-7890' a valid phone number?", isValidPhoneNumber("(123) 456-7890"));
+        console.log("Is '123.456.7890' a valid phone number?", isValidPhoneNumber("123.456.7890"));                                                             
+        console.log("Is '+1234567890' a valid phone number?", isValidPhoneNumber("+1234567890"));          
+        // This will check if the string is a valid date
+        function isValidDate(dateString) {
+            const regex = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/;
+            return regex.test(dateString);
+        }
+        console.log("Is '31-12-2020' a valid date?", isValidDate("31-12-2020"));
+    </script>                                                                                   
+</body>
+</html>
