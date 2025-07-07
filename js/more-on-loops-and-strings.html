@@ -8,7 +8,85 @@
     <h1>More on Loops and Strings</h1>
     <p>This is a simple HTML document to demonstrate loops and strings in JavaScript.</p>
     <script>
-        // JavaScript code can go here
+
+Iterate using a standard for loop
+
+// let's write a loop to go through each array item in turn and log it as part of a sentence.
+for (let i = 0; i < pets.length; i++) {
+   console.log('I have a', pets[i]);
+}
+/* This code initializes an iterator variable i to 0, then runs the code inside the for loop 
+for as many times as the number of items in the pets array.
+At every loop, it uses the value of i to access a different item in the array, in sequence, 
+and uses that item in a console.log() statement.
+In the loop's first iteration, the value of i is 0, and the value stored at pets[0] is 'dog', 
+so 'I have a dog' is printed, and so on.
+Expected output:
+
+I have a dog
+I have a cat
+I have a fish
+
+Iterate using the for ... of syntax
+JavaScript gives us an easier way to iterate over an array with a for loop, called a for ... of loop.
+We can replicate the results from the above example like this:
+*/
+for (const pet of pets) {
+   console.log('I have a', pet);
+}
+/*Expected output:
+
+I have a dog
+I have a cat
+I have a fish
+
+Let's break down the syntax of the for ... of loop:
+We begin with the keyword for:
+for
+We follow it with a set of parentheses:
+for ( )
+Inside the parentheses, we declare a new variable to be used inside the for loop named pet.
+Because we don't intend to change the value of pet inside the for loop, it is appropriate to use the const variable declaration keyword: */
+for (const pet of pets) {
+   console.log('I have a', pet);
+}
+/*
+When we use the for ... of syntax, JavaScript will automatically use the length of the array given after the of keyword for the number of loops to make.
+The code inside the for block will run exactly as many times as the number of items in the given array. So if the array has 5 items, the loop will run exactly 5 times, and no more.
+In the loop's first iteration, the value of the variable defined before the of keyword will be the value of the first item in the array defined after the of keyword. That means the pet variable will be assigned the value of 'dog', because 'dog' is the first item in the pets array. 
+In the loop's second iteration, the pet variable will be assigned the value of 'cat' (because it is the second item in the pets array), and so on, until each item in the array has been used once and the entire loop is completed.
+Inside the loop, whatever code you run will execute once for each item in the array, and you can use the variable pet in any way inside the loop that makes sense.
+You can name this variable as you wish; it isn't required to be pet. It could be p, for example. However, it's quite common to see arrays possessing a plural noun name (such as pets), and variables that refer to single values/items from that array having the singular form of that plural name (such as pet).
+
+
+Iterate over and mutate the values in the array
+The above examples showed looping through an array without mutating (changing) the values of the array.
+Let's look at one way to loop through an array and change its values at the same time.
+Let's double check the contents of our pets array, using a console.log(): */
+console.log(pets)
+/*
+Expected output:
+["dog", "cat", "fish"]
+
+You can see from this that the array contents have not changed since they were originally set.
+Next, enter this code into the developer console 
+(note - for the cleanest output, use Shift-Enter instead of Enter between the closing curly brace of the 
+for loop and the final console.log line -- if you use Enter instead, that's okay, but you will see an 
+additional output that says 'FISH' that you can ignore): */
+for (let i = 0; i < pets.length; i++) {
+   pets[i] = pets[i].toUpperCase();
+}
+console.log(pets)
+/*
+In this case, we are assigning a new value to each array item through what's called bracket notation.
+On the left side of the assignment operator (the = sign), we specify what it we want to change: the item at index i in the pets array, or pets[i].
+On the right side, we have the new value we want to set for that item: the current value of the array item at pets[i], set to upper case using a string method called toUpperCase().
+Expected output:
+["DOG", "CAT", "FISH"]
+
+*/
+
+        // String manipulation examples
         // This will log each character of the string "Hello, World!" to the console
         let str = "Hello, World!";
         for (let i = 0; i < str.length; i++) {
