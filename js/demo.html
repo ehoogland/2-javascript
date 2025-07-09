@@ -131,9 +131,20 @@
                 outputDiv.removeChild(outputDiv.lastChild);
             }
         }
+        function superAlert ( inputString ) {
+            alert( inputString );
 
+            let tempDiv = document.createElement("div");
+            tempDiv.innerText = JSON.stringify(inputString);
 
+            let outputDiv = document.getElementById("outputScreen");
+            outputDiv.prepend(tempDiv);
 
+            // Limit the number of entries to 10
+            if (outputDiv.children.length > 10) {
+                outputDiv.removeChild(outputDiv.lastChild);
+            }
+        }       
         //think of const as the address to your house
         //the reference doesn't change
         //but the house can, painted, add more rooms etc
@@ -149,7 +160,7 @@
             let correctCompany = getRandomCompany ();
 
             superLog("Hiring Company: " + correctCompany);
-
+            // we start as false
             let correctlyMatched = false;
 
             do {
@@ -172,7 +183,8 @@
             //means matched otherwise would be in that loop
             superLog("CONGRATS! YOU GOT YOUR DREAM COMPANY");
 
-        }function checkGuess (guess, target) {
+        }
+        function checkGuess (guess, target) {
 
             let matched = false;
 
@@ -227,39 +239,53 @@
 
         function addCompany () {
 
-            let companyToAdd = prompt(
-                "What company do you want to add...", "Disney");
+            let companyToAdd = String(prompt("What company do you want to add?"));
+            //check if companyToAdd is empty or null
+            if (companyToAdd === "" || companyToAdd === null) {
+                alert('No company was entered. Please start over.');
+                return;
+            }
 
             //check if company already exist on the list.
-            //week 3 checking an array if something already exist
-            //or use the standard includes / indexOf
-
-            companiesList.push( companyToAdd );
-            companiesList.sort();
-            superLog(companiesList);
-
-        }
-
-        function removeCompany () {
-            let companyToRemove = prompt(
-                "What company do you want to remove?");
-                  if (companyToRemove === "" || companyToRemove === null) {
-                    alert('No company was entered. Please start over.');
-                    return; }
-                  do ([i]=0; [i] < lastIndexOf(companiesList); [i++])) {
-                    while (companiesList.indexOf[-1] !== companyToRemove) {
-
-                  let popped = companiesList.pop( companyToRemove );
-                  alert(popped + " has been removed.")
-                  }
-                alert(companiesList);
+            else if (companiesList.includes(companyToAdd)) {
+                alert("Company already exists in the list.");
+                return;
+            }
+            else {
+           
+                companiesList.push( companyToAdd );
+                companiesList.sort();
                 superLog(companiesList);
-                return;  
-                } 
+                alert(companyToAdd + " has been added to the list.");
+            }
         }
-    </script>   
+        function thinkOfCompany() {
+            alert(`Examine the following list of companies and press OK after you've thought of the one you want to remove: ${companiesList.join(", ")}.`);
+            return;}
 
-  </body>
+        function removeCompany() {
+            thinkOfCompany();
+
+            let companyToRemove = String(prompt("What company do you want to remove?"));
+            const index = companiesList.indexOf(companyToRemove);
+            //check if companyToRemove is empty or null
+            if (companyToRemove === "" || companyToRemove === null) {
+                alert('No company was entered. Please start over.');
+                return;
+            }
+            if (index === -1) {
+                alert("Company not found in the list.");
+                return;
+            }
+            // Confirm the removal
+            if (confirm(`Are you sure you want to remove ${companyToRemove}?`)) {
+                companiesList.splice(index, 1);
+                alert(`${companyToRemove} has been removed from the following list: ${companiesList.join(", ")}.`);
+                return;
+            }
+        }
+  </script>
+</body>
 </html>
 
         
