@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+</head>
+<body>
+    <script>
+    // I define a class called Books with a constructor method having three parameters.
+class Book {
+    // the boolean parameter called available has a default value of true.
+    constructor(title, author, available = true) {
+        // the constructor's three parameters are set 
+        // as properties of the object 
+        this.title = title;
+        this.author = author;
+        this.available = available;
+    }
+} // end Books
+
+        
+// This object contains an array of books--books-- 
+// and add, check out, and available methods to manage the books array.
+const library = {
+    books: [],
+    // This creates a new instance of an object using a constructor 
+    // using the new keyword and passing the appropriate arguments.
+    // An addBook method to add a new book to the library when a patron donates a book.
+    addBook: function (title, author) {
+        const book = new Book(title, author);
+        this.books.push(book);
+
+        console.log(`You have added "${book.title}", by ${book.author} to our listings. 
+            Books in the library's database: ${this.books.length}`);
+            
+    },
+    
+    checkOutBook: function(title) {
+        for (let book of this.books) {
+            if (book.title === title && book.available) {
+                found = true;
+                book.available = false;
+            }
+            console.log(`Checked out: ${book.title}`)
+            return;
+        }
+    },
+    getAvailableBooks: function() {
+        let bookList = [];
+        for (let book of this.books) {
+            if (book.available) {
+                bookList.push(book.title);
+            }
+        }
+        console.log(`There are ${bookList.length} titles in the library's listings:              ${bookList.join(" -- ")}`) 
+        return;
+    }
+}   
+
+        
+</script>
+    
+</body>
+</html>
+ 
+    addBook("How Not To Diet", "Michael Greger, M.D.");
+    addBook("Moby-Dick", "Herman Melville");
+    addBook("How Not To Die", "Michael Greger, M.D.");
+    addBook("How Not To Diet", "Michael Greger, M.D.");
+    checkOutBook("How Not To Diet");
+    getAvailableBooks(); 
+        
