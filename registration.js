@@ -5,31 +5,27 @@ class Student {
     }
 }
 class Bootcamp {
-    constructor(name, level, students =[]) {
+    constructor(name, level, students = []) {
         this.name = name;
         this.level = level;
         this.students = students;
     }
+
     registerStudent(studentToRegister) {
 
         if (!studentToRegister.name || !studentToRegister.email) {
-
             console.log('Invalid name or email');
             return false;
-
-        } else if (this.students.length > 0) {
-            for (let const student of this.students) {
-                if (student.name === studentToRegister.name
-                || student.email === studentToRegister.email) {
-                    
-                    return false;
-                }
-            }
-        } else {
-
-
-
         }
+        for (const student of this.students) {
+            if (student.email === studentToRegister.email) {
+                console.log("This email is already registered")   
+                return false;
+            }
+        }
+        this.students.push(studentToRegister);
+        console.log(`Congratulations, ${studentToRegister}.\nYou have successfully registered for Bootcamp Hell.`)
+        return true;
     }
 }
 // Task 1
