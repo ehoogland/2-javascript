@@ -25,26 +25,30 @@ const library = {
     addBook: function (title, author) {
         const book = new Book(title, author);
         this.books.push(book);
-        console.log(`\nAnother best-in-class book added:\n"${book.title}", by ${book.author}.`)
+        console.log(`\nBest-in-class book added:\n"${book.title}", by ${book.author}.`)
         console.log(`Books in the library's database: ${this.books.length}`);
         },  
         
         checkOutBook: function(title) {
-            for (let book of this.books) {
-                if (book.title === title && !book.available) {
-                    console.log(`\n${book.title} is already checked out`);
-                    return 
-                }
-                if (book.title === title && book.available) {
-                    found = true;
-                    book.available = false;
-                    console.log(`\nChecked out: ${book.title}`)
-                    return;
-                }
-                else {   
-                    console.log(`${title} is not in our collection.`)
-                    return;
-                }
+            try {
+                let found = false;
+                for (let book of this.books) {
+                    if (book.title === title && !book.available) {
+                        console.log(`\n${book.title} is already checked out`);
+                        return; 
+                    }
+                    else if (book.title === title && book.available) {
+                        found = true;
+                        book.available = false;
+                        console.log(`\nChecked out: ${book.title}`);
+                        return;
+                    }
+                } // end for
+                // books that were "!found" but had a title match out 
+                // were filtered in the first if clause 
+                if (!found) throw new Error(`The book: "${title}" was not found`)
+            } catch (error) {
+                console.error(error.message);
             }
         },
     
