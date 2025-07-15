@@ -35,13 +35,13 @@ const library = {
                 for (let book of this.books) {
                     if (book.title === title && !book.available) {
                         console.log(`\n${book.title} is already checked out`);
-                        return; 
+                        return false; 
                     }
                     else if (book.title === title && book.available) {
                         found = true;
                         book.available = false;
                         console.log(`\nChecked out: ${book.title}`);
-                        return;
+                        return false;
                     }
                 } // end for
                 // books that were "!found" but had a title match out 
