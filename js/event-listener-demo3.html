@@ -13,6 +13,11 @@
     <div>Move your mouse over this text then off!</div>
 
     <script>
+        /**
+         * Now we are using mouseover, not onmouseover, so we
+         * can listen for more than one action on the same event.
+         * Both the text and the background change on the same event.
+         */ 
         const div = document.querySelector('div');
         div.addEventListener('mouseover', changeTextColor);
         div.addEventListener('mouseover', changeBackground);
