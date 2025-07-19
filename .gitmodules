@@ -1,6 +1,3 @@
 [submodule "glowing-carnival"]
 	path = glowing-carnival
 	url = https://github.com/ehoogland/glowing-carnival.git
-[submodule "laughing-octo-carnival"]
-	path = laughing-octo-carnival
-	url = https://github.com/ehoogland/laughing-octo-carnival.git
